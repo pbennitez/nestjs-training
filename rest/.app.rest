@@ -9,7 +9,7 @@ GET {{api}}
 GET {{api}}/tasks
 
 ### finById
-GET {{api}}/tasks/1
+GET {{api}}/tasks/4
 
 ### create
 POST {{api}}/tasks
