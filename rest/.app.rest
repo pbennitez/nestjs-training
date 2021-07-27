@@ -1,0 +1,25 @@
+@api=http://localhost:3000
+
+### hellow word
+GET {{api}}
+
+### tasks
+
+### find
+GET {{api}}/tasks
+
+### finById
+GET {{api}}/tasks/1
+
+### create
+POST {{api}}/tasks
+
+### update
+PATCH {{api}}/tasks/1
+
+### replace
+PUT {{api}}/tasks/1
+
+### delete
+DELETE {{api}}/tasks/1
+
