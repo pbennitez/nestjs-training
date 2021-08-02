@@ -13,12 +13,35 @@ GET {{api}}/tasks/4
 
 ### create
 POST {{api}}/tasks
+Content-Type: application/json
+
+{
+    "title": "Ejemplo 1",
+    "user": {
+        "name": "Foo",
+        "email": "test@example.com"
+    }
+}
 
 ### update
 PATCH {{api}}/tasks/1
+Content-Type: application/json
+
+{
+    "completed": true
+}
 
 ### replace
 PUT {{api}}/tasks/1
+Content-Type: application/json
+
+{
+    "title": "Ejemplo 1",
+    "user": {
+        "name": "Foo",
+        "email": "test@example.com"
+    }
+}
 
 ### delete
 DELETE {{api}}/tasks/1

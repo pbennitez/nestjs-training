@@ -2,15 +2,16 @@ import { Body, Delete, HttpCode, Put, Query } from '@nestjs/common';
 import { Param, ParseIntPipe } from '@nestjs/common';
 import { Get, Patch, Post, HttpStatus } from '@nestjs/common';
 import { Controller } from '@nestjs/common';
-import { ParseIntegerPipe } from './parse-integer.pipe';
-import { TasksService } from './tasks.service';
+import { CreateTasksDto, UpdateTasksDto } from '../dtos/tasks.dto';
+import { ParseIntegerPipe } from '../pipes/parse-integer.pipe';
+import { TasksService } from '../services/tasks.service';
 
 @Controller('tasks')
 export class TasksController {
     constructor(private readonly tasksService: TasksService) {}
 
     @Post()
-    create(@Body() data: any) {
+    create(@Body() data: CreateTasksDto) {
         return this.tasksService.create(data)
     }
 
@@ -26,12 +27,12 @@ export class TasksController {
 
     @Patch(':id')
     @HttpCode(HttpStatus.NO_CONTENT)
-    update(@Param('id', ParseIntegerPipe) id: number,@Body() data: any) {
+    update(@Param('id', ParseIntegerPipe) id: number, @Body() data: UpdateTasksDto) {
         return this.tasksService.update(id, data)
     }
 
     @Put(':id')
-    replace(@Param('id', ParseIntegerPipe) id: number,@Body() data: any) {
+    replace(@Param('id', ParseIntegerPipe) id: number,@Body() data: CreateTasksDto) {
         return this.tasksService.replace(id, data)
     }
 

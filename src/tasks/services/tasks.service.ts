@@ -3,7 +3,7 @@ import { Injectable } from '@nestjs/common';
 @Injectable()
 export class TasksService {
     create(data?: any) {
-        return `create ${data || ''}`
+        return `create ${JSON.stringify(data) || ''}`
     }
 
     find(filters?: any) {
@@ -15,7 +15,7 @@ export class TasksService {
     }
 
     update(id?: any, data?: any) {
-        return 'update'
+        return `update ${JSON.stringify(data) || ''}`
     }
 
     replace(id?: any, data?: any) {
