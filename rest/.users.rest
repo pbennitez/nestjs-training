@@ -1,0 +1,38 @@
+@api=http://localhost:3000
+
+### tasks
+
+### find
+GET {{api}}/users
+
+### finByEmail
+GET {{api}}/users/example@test.com
+
+### create
+POST {{api}}/users
+Content-Type: application/json
+
+{
+    "firstName": "Example",
+    "email": "example@test.com",
+    "password": "123456",
+    "roles": []
+}
+
+### update
+PATCH {{api}}/users/0
+Content-Type: application/json
+
+{
+    "lastName": "Test"
+}
+
+### replace
+PUT {{api}}/users/0
+Content-Type: application/json
+
+{
+}
+
+### delete
+DELETE {{api}}/users/0

@@ -47,7 +47,7 @@ export class TasksService {
     }
 
     delete(id?: any) {
-        if (id < 0 || this.tasks.length < id) {
+        if (id < 0 || this.tasks.length <= id) {
             throw new NotFoundException()
         }
         

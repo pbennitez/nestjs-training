@@ -2,6 +2,7 @@ import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { TasksModule } from './tasks/tasks.module';
+import { UsersModule } from './users/users.module';
 
 /**
  * TAREA:
@@ -32,7 +33,7 @@ import { TasksModule } from './tasks/tasks.module';
  * o muchos usuarios.
  */
 @Module({
-  imports: [TasksModule],
+  imports: [UsersModule, TasksModule],
   controllers: [AppController],
   providers: [AppService],
 })

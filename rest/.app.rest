@@ -2,38 +2,3 @@
 
 ### hellow word
 GET {{api}}
-
-### tasks
-
-### find
-GET {{api}}/tasks
-
-### finById
-GET {{api}}/tasks/0
-
-### create
-POST {{api}}/tasks
-Content-Type: application/json
-
-{
-    "title": "Ejemplo 4"
-}
-
-### update
-PATCH {{api}}/tasks/4
-Content-Type: application/json
-
-{
-    "completed": true
-}
-
-### replace
-PUT {{api}}/tasks/0
-Content-Type: application/json
-
-{
-    "title": "Ejemplo 3"
-}
-
-### delete
-DELETE {{api}}/tasks/1
