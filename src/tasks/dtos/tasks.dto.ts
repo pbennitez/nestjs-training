@@ -29,11 +29,6 @@ export class CreateTasksDto {
     @IsNumber()
     @IsOptional()
     readonly favorites: number
-
-    @IsNotEmpty()
-    @Type(() => UserDto)
-    @ValidateNested()
-    readonly user: UserDto
 }
 
 export class UpdateTasksDto extends PartialType(CreateTasksDto) {}

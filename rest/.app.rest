@@ -9,22 +9,18 @@ GET {{api}}
 GET {{api}}/tasks
 
 ### finById
-GET {{api}}/tasks/4
+GET {{api}}/tasks/0
 
 ### create
 POST {{api}}/tasks
 Content-Type: application/json
 
 {
-    "title": "Ejemplo 1",
-    "user": {
-        "name": "Foo",
-        "email": "test@example.com"
-    }
+    "title": "Ejemplo 4"
 }
 
 ### update
-PATCH {{api}}/tasks/1
+PATCH {{api}}/tasks/4
 Content-Type: application/json
 
 {
@@ -32,17 +28,12 @@ Content-Type: application/json
 }
 
 ### replace
-PUT {{api}}/tasks/1
+PUT {{api}}/tasks/0
 Content-Type: application/json
 
 {
-    "title": "Ejemplo 1",
-    "user": {
-        "name": "Foo",
-        "email": "test@example.com"
-    }
+    "title": "Ejemplo 3"
 }
 
 ### delete
 DELETE {{api}}/tasks/1
-
