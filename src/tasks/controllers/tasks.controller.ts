@@ -6,6 +6,9 @@ import { CreateTasksDto, UpdateTasksDto } from '../dtos/tasks.dto';
 import { ParseIntegerPipe } from '../pipes/parse-integer.pipe';
 import { TasksService } from 'src/shared/services/tasks.service';
 
+import { ApiTags } from '@nestjs/swagger'
+
+@ApiTags('tasks')
 @Controller('tasks')
 export class TasksController {
     constructor(private readonly tasksService: TasksService) {}

@@ -18,7 +18,7 @@ export class AppService {
     getHello(): string {
       return `Hello World!
         ${this.value}
-        ${this.configService.get<number>('BY_VALUE')}
+        ${this.configService.get<number>('DATABASE_PORT')}
         ${this.configType.byValue}
       `;
     }

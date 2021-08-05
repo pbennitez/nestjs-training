@@ -48,10 +48,12 @@ export const MY_KEY = '123456'
       envFilePath: get(enviroments, process.env.NODE_ENV, '.env'),
       load: [config],
       isGlobal: true,
+
       validationSchema: Joi.object({
         BY_VALUE: Joi.number().required(),
         DATABASE_NAME: Joi.string().required(),
         DATABASE_PORT: Joi.number().required(),
+        PORT: Joi.number().required(),
       }),
     }),
     UsersModule,

@@ -6,6 +6,9 @@ import { UsersService } from 'src/shared/services/users.service';
 import { CreateUsersDto, UpdateUsersDto } from '../dtos/users.dto';
 import { IsEmailPipe } from '../pipes/is-email.pipe';
 
+import { ApiTags, ApiOperation } from '@nestjs/swagger'
+
+@ApiTags('users')
 @Controller('users')
 export class UesrsController {
     constructor(private readonly usersService: UsersService) {}
@@ -16,6 +19,9 @@ export class UesrsController {
     }
 
     @Post()
+    @ApiOperation({
+      summary: 'Crear un usuario'
+    })
     create(@Body() data: CreateUsersDto) {
         return this.usersService.create(data)
     }

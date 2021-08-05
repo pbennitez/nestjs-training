@@ -7,5 +7,6 @@ export default registerAs('config', () => {
       port: process.env.DATABASE_PORT,
     },
     byValue: process.env.BY_VALUE,
+    port: process.env.PORT,
   };
 });
