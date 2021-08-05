@@ -1,8 +1,18 @@
-import { Module } from '@nestjs/common';
+import { HttpService, Module, HttpModule } from '@nestjs/common';
+import * as Joi from 'joi';
+
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { TasksModule } from './tasks/tasks.module';
 import { UsersModule } from './users/users.module';
+
+import { SharedModule } from './shared/shared.module';
+import { ConfigModule } from '@nestjs/config';
+import { enviroments } from './enviroments';
+import config from './config'
+import { get } from 'lodash';
+
+export const MY_KEY = '123456'
 
 /**
  * TAREA:
@@ -33,8 +43,42 @@ import { UsersModule } from './users/users.module';
  * o muchos usuarios.
  */
 @Module({
-  imports: [UsersModule, TasksModule],
+  imports: [
+    ConfigModule.forRoot({
+      envFilePath: get(enviroments, process.env.NODE_ENV, '.env'),
+      load: [config],
+      isGlobal: true,
+      validationSchema: Joi.object({
+        BY_VALUE: Joi.number().required(),
+        DATABASE_NAME: Joi.string().required(),
+        DATABASE_PORT: Joi.number().required(),
+      }),
+    }),
+    UsersModule,
+    TasksModule,
+    HttpModule,
+    SharedModule
+  ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [
+    AppService,
+    {
+        provide: 'BY_VALUE',
+        useValue: MY_KEY,
+    },
+    {
+        provide: 'TODOS',
+        useFactory: async (http: HttpService) => {
+            const todos = await http
+                .get('https://jsonplaceholder.typicode.com/todos')
+                .toPromise()
+            
+            console.log("🚀 ~ file: app.module.ts ~ line 55 ~ useFactory: ~ todos", todos.data.length)
+            
+            return todos.data
+        },
+        inject: [HttpService]
+    }
+  ],
 })
 export class AppModule {}

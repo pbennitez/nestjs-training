@@ -1,6 +1,6 @@
 @api=http://localhost:3000
 
-### tasks
+### users
 
 ### find
 GET {{api}}/users
@@ -13,8 +13,8 @@ POST {{api}}/users
 Content-Type: application/json
 
 {
-    "firstName": "Example",
-    "email": "example@test.com",
+    "firstName": "Example 2",
+    "email": "example2@test.com",
     "password": "123456",
     "roles": []
 }
@@ -36,3 +36,7 @@ Content-Type: application/json
 
 ### delete
 DELETE {{api}}/users/0
+
+
+### value
+GET {{api}}/users/value

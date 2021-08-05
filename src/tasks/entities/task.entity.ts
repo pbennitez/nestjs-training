@@ -5,7 +5,7 @@ export interface ITask {
     description?: string;
     completed?: boolean;
     favorites?: number
-    user?: number
+    user: number
 }
 
 export class Task implements ITask {
@@ -14,7 +14,7 @@ export class Task implements ITask {
     description?: string;
     completed = false;
     favorites = 0;
-    user?: number;
+    user: number;
 
     constructor(data: ITask) {
         Object.assign(this, data);

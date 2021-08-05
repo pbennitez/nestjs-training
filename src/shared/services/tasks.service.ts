@@ -1,10 +1,13 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { find, get, pullAt, isEmpty } from 'lodash';
-import { ITask, Task } from '../entities/task.entity';
+import { ITask, Task } from 'src/tasks/entities/task.entity';
+import { UsersService } from './users.service';
 
 @Injectable()
 export class TasksService {
     tasks: ITask[] = [];
+
+    constructor(private readonly _userService: UsersService) {}
 
     create(data?: any) {
         data.id = this.tasks.length
@@ -25,7 +28,9 @@ export class TasksService {
             throw new NotFoundException()
         }
         
-        return get(this.tasks, id)
+        const task = get(this.tasks, id)
+
+        return Object.assign(task, { user: this._userService.findById(task.user)})
     }
 
     update(id?: any, data?: any) {

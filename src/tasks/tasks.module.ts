@@ -1,9 +1,9 @@
 import { Module } from '@nestjs/common';
+import { SharedModule } from 'src/shared/shared.module';
 import { TasksController } from './controllers/tasks.controller';
-import { TasksService } from './services/tasks.service';
 
 @Module({
+    imports: [SharedModule],
     controllers: [TasksController],
-    providers: [TasksService]
 })
 export class TasksModule {}

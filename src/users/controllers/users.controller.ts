@@ -2,13 +2,18 @@ import { Body, Delete, HttpCode, ParseIntPipe, Put, Query } from '@nestjs/common
 import { Param } from '@nestjs/common';
 import { Get, Patch, Post, HttpStatus } from '@nestjs/common';
 import { Controller } from '@nestjs/common';
+import { UsersService } from 'src/shared/services/users.service';
 import { CreateUsersDto, UpdateUsersDto } from '../dtos/users.dto';
 import { IsEmailPipe } from '../pipes/is-email.pipe';
-import { UsersService } from '../services/users.service';
 
 @Controller('users')
 export class UesrsController {
     constructor(private readonly usersService: UsersService) {}
+
+    @Get('/value')
+    getValue() {
+      return this.usersService.getValue()
+    }
 
     @Post()
     create(@Body() data: CreateUsersDto) {

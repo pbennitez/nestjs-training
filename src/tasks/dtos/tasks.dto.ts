@@ -1,20 +1,7 @@
-import { PartialType } from '@nestjs/mapped-types'
-import { Type } from 'class-transformer';
-import { IsBoolean, IsNumber, IsString, IsNotEmpty, IsOptional, IsEmail, ValidateNested } from 'class-validator'
-
-class UserDto {
-    @IsString()
-    @IsNotEmpty()
-    name: string;
-
-    @IsEmail()
-    email: string;
-}
-
+import { PartialType } from '@nestjs/mapped-types';
+import { IsBoolean, IsNumber, IsString, IsNotEmpty, IsOptional } from 'class-validator'
 export class CreateTasksDto {
-    @IsString({
-        message: "mas info"
-    })
+    @IsString()
     @IsNotEmpty()
     readonly title: string
 
@@ -29,6 +16,10 @@ export class CreateTasksDto {
     @IsNumber()
     @IsOptional()
     readonly favorites: number
+
+    @IsNumber()
+    @IsNotEmpty()
+    readonly user: number
 }
 
 export class UpdateTasksDto extends PartialType(CreateTasksDto) {}

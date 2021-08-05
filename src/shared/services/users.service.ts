@@ -1,10 +1,19 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
-import { find, get, pullAt, isEmpty } from 'lodash';
-import { User, IUser } from '../entities/user.entity';
+import { Injectable, NotFoundException, Inject } from '@nestjs/common';
+import { find, pullAt, isEmpty, get } from 'lodash';
+import { IUser, User } from 'src/users/entities/user.entity';
 
 @Injectable()
 export class UsersService {
     users: IUser[] = [];
+    
+    constructor(
+      @Inject('TODO')
+      private readonly value: string,
+    ) {}
+
+    getValue() {
+      return this.value;
+    }
 
     create(data?: any) {
         data.id = this.users.length
@@ -18,6 +27,14 @@ export class UsersService {
         }
         
         return find(this.users, filters);
+    }
+
+    findById(id?: any) {
+        if (id < 0 || this.users.length < id) {
+            throw new NotFoundException()
+        }
+        
+        return get(this.users, id)
     }
 
     findByEmail(email?: string) {

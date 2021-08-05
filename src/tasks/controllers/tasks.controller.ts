@@ -4,7 +4,7 @@ import { Get, Patch, Post, HttpStatus } from '@nestjs/common';
 import { Controller } from '@nestjs/common';
 import { CreateTasksDto, UpdateTasksDto } from '../dtos/tasks.dto';
 import { ParseIntegerPipe } from '../pipes/parse-integer.pipe';
-import { TasksService } from '../services/tasks.service';
+import { TasksService } from 'src/shared/services/tasks.service';
 
 @Controller('tasks')
 export class TasksController {
@@ -32,7 +32,7 @@ export class TasksController {
     }
 
     @Put(':id')
-    replace(@Param('id', ParseIntegerPipe) id: number,@Body() data: CreateTasksDto) {
+    replace(@Param('id', ParseIntegerPipe) id: number, @Body() data: CreateTasksDto) {
         return this.tasksService.replace(id, data)
     }
 

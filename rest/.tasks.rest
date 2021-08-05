@@ -13,7 +13,8 @@ POST {{api}}/tasks
 Content-Type: application/json
 
 {
-    "title": "Ejemplo 4"
+    "title": "Titulo 1",
+    "user": 0
 }
 
 ### update
