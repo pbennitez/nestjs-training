@@ -1,12 +1,12 @@
-import { registerAs } from '@nestjs/config';
+// import { registerAs } from '@nestjs/config';
 
-export default registerAs('config', () => {
-  return {
-    database: {
-      name: process.env.DATABASE_NAME,
-      port: process.env.DATABASE_PORT,
-    },
-    byValue: process.env.BY_VALUE,
-    port: process.env.PORT,
-  };
-});
+// export default registerAs('config', () => {
+//   return {
+//     database: {
+//       name: process.env.DATABASE_NAME,
+//       port: process.env.DATABASE_PORT,
+//     },
+//     byValue: process.env.BY_VALUE,
+//     port: process.env.PORT,
+//   };
+// });
